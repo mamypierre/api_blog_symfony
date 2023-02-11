@@ -1,5 +1,5 @@
-controllers:
-    resource:
-        path: ../src/Controller/
-        namespace: App\Controller
-    type: attribute
+
+posts_last_added:
+    path: /api/posts/last_added
+    methods: GET
+    controller: App\UserInterface\Controller\Post\LastAddedController

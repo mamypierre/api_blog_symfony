@@ -2,4 +2,4 @@
 posts_last_added:
     path: /api/posts/last_added
     methods: GET
-    controller: App\UserInterface\Controller\Post\LastAddedController
+    controller: App\UserInterface\Controller\Api\Post\LastAddedController

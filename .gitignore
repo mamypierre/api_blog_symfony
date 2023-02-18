@@ -7,7 +7,7 @@
 /public/bundles/
 /var/
 /vendor/
-./.idea
-./migrations
-./composer.lock
+/.idea/
+/migrations/
+/composer.lock
 ###< symfony/framework-bundle ###

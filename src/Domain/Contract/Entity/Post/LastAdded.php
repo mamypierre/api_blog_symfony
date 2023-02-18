@@ -6,13 +6,14 @@ use App\Domain\Contract\Entity\Image\ImageInterface;
 interface LastAdded
 {
     public function getTitle(): string;
-    public function setTitle(string $title): LastAdded;
+    public function setTitle(string $title): self;
     public function getShortDescription(): ?string;
-    public function setShortDescription(string $shortDescription = null): LastAdded;
+    public function setShortDescription(string $shortDescription = null): self;
 
     /**
      * @return ImageInterface []
      */
-    public function getImages(): array;
-    public function addImage(ImageInterface $image): LastAdded;
+    public function getImages();
+    public function addImage(ImageInterface $image): self;
+    public function removeImage(ImageInterface $image): self;
 }

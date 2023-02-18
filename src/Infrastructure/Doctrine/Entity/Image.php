@@ -3,12 +3,25 @@
 namespace App\Infrastructure\Doctrine\Entity;
 
 use App\Domain\Contract\Entity\Image\ImageInterface;
+use App\Infrastructure\Doctrine\Repository\ImageRepository;
+use Doctrine\ORM\Mapping as ORM;
 
+
+#[ORM\Entity(repositoryClass: ImageRepository::class)]
 class Image implements ImageInterface
 {
+
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private ?int $id = null;
+
+    #[ORM\Column(length: 255)]
     protected string $title ;
 
+    #[ORM\Column(length: 255)]
     protected string $type ;
+    #[ORM\Column(length: 255)]
     protected string $dimension ;
 
     /**
@@ -64,4 +77,10 @@ class Image implements ImageInterface
         $this->dimension = $dimension;
         return $this;
     }
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
 }

@@ -2,7 +2,9 @@
 
 namespace App\Domain\Contract\Entity\Image;
 
-interface ImageInterface
+use App\Domain\Contract\Entity\CreateUpdateDateInterface;
+
+interface ImageInterface extends CreateUpdateDateInterface
 {
     const TYPE_THUMBNAIL = 'thumbnail';
     public const TYPES = [

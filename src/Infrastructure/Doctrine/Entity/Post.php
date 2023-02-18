@@ -4,14 +4,17 @@ namespace App\Infrastructure\Doctrine\Entity;
 
 use App\Domain\Contract\Entity\Image\ImageInterface;
 use App\Domain\Contract\Entity\Post\PostInterface;
+use App\Infrastructure\Doctrine\Entity\Trai\Timestamp;
 use App\Infrastructure\Doctrine\Repository\PostRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: PostRepository::class)]
+#[ORM\HasLifecycleCallbacks()]
 class Post implements PostInterface
 {
+    use Timestamp;
 
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -19,14 +22,23 @@ class Post implements PostInterface
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    protected string $title;
+    private string $title;
     #[ORM\Column(length: 255, nullable: true)]
-    protected ?string $shortDescription = null;
+    private ?string $shortDescription = null;
     /**
      * @todo collection
      */
     #[ORM\ManyToMany(targetEntity: Image::class, inversedBy: 'posts')]
-    protected Collection $images ;
+    private Collection $images ;
+
+    /**
+     * @ORM\Column(type="datetime_immutable", name="created_at")
+     */
+    #[ORM\Column(name: 'created_at', type: 'datetime_immutable')]
+    private $createdAt;
+
+    #[ORM\Column(name: 'updated_at', type: 'datetime_immutable')]
+    private $updatedAt;
 
     public function __construct()
     {
@@ -92,4 +104,30 @@ class Post implements PostInterface
 
         return $this;
     }
+
+
+    public function getCreatedAt(): ?\DateTimeImmutable
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeImmutable $createdAt): self
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeImmutable
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(\DateTimeImmutable $updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
 }

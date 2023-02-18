@@ -22,17 +22,27 @@ class PostRepository extends ServiceEntityRepository implements PostRepositoryIn
     {
         parent::__construct($registry, Post::class);
     }
+
     /**
      * @return array|PostRepositoryInterface[]
-     *@todo buid with doctrine
+     * @todo buid with doctrine
      */
     public function getLastAdded(): array
     {
+        $qb = $this->createQueryBuilder('post');
+        $query = $qb
+            ->orderBy('t.id', 'ASC')
+            ->setMaxResults(10)
+            ->getQuery()
+        ;
+
+        return $query->getResult();
+//        ;
         // @todo get this by data base
         $image = new Image();
-        $image->setTitle('tilte image') ;
-        $image->setType('type') ;
-        $image->setDimension('dimension') ;
+        $image->setTitle('tilte image');
+        $image->setType('type');
+        $image->setDimension('dimension');
         //post
         $postPreview = new Post();
         $postPreview->setTitle('tilte post');

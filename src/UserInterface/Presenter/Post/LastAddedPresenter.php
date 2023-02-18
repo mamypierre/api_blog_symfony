@@ -28,18 +28,18 @@ class LastAddedPresenter implements LastAddedPresenterInterface
             // init post
             $postPreviewApi = new PostPreview();
             $postPreviewApi
-                ->setTitle($postPreview->title)
-                ->setShortDescription($postPreview->shortDescription)
+                ->setTitle($postPreview->getTitle())
+                ->setShortDescription($postPreview->getShortDescription())
             ;
 
-            $images = $postPreview->images;
+            $images = $postPreview->getImages();
 
             foreach ($images as $image) {
                 $imageApi = new Image();
                 $imageApi
-                    ->setTitle($image->title)
-                    ->setDimension($image->dimension)
-                    ->setType($image->type)
+                    ->setTitle($image->getTitle())
+                    ->setDimension($image->getDimension())
+                    ->setType($image->getType())
                 ;
                 $postPreviewApi->addImage($imageApi);
             }

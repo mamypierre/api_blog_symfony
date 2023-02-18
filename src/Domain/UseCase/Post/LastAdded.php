@@ -2,31 +2,33 @@
 
 namespace App\Domain\UseCase\Post;
 use App\Domain\Contract\Presenter\Post\LastAddedPresenterInterface;
+use App\Domain\Contract\Repository\PostRepositoryInterface;
 use App\Domain\Contract\Request\Post\LastAddedRequestInterface;
 use App\Domain\Response\Post\LastAddedResponse;
 use App\Domain\UseCase\Post\Interface\LastAddedInterface;
-use JetBrains\PhpStorm\NoReturn;
-use stdClass;
+
 
 class LastAdded implements LastAddedInterface
 {
-    #[NoReturn] public function execute(LastAddedRequestInterface $request, LastAddedPresenterInterface $lastAddedPresenter) : void
-    {
-        // get response
-        // image
-        $image = new stdClass();
-        $image->title = 'tilte image';
-        $image->type = 'type';
-        $image->dimension = 'dimension';
-        //post
-        $postPreview = new stdClass();
-        $postPreview->title = "tilte post";
-        $postPreview->shortDescription = "shortDescription post";
-        $postPreview->images = [$image];
 
+    private PostRepositoryInterface $postRepository;
+
+    public function __construct(PostRepositoryInterface $postRepository)
+    {
+        $this->postRepository = $postRepository;
+    }
+
+    /**
+     * @param LastAddedRequestInterface $request
+     * @param LastAddedPresenterInterface $lastAddedPresenter
+     * @return void
+     */
+    public function execute(LastAddedRequestInterface $request, LastAddedPresenterInterface $lastAddedPresenter) : void
+    {
+        $postLastAdded = $this->postRepository->getLastAdded();
         // build response
         $response = new LastAddedResponse();
-        $response->setPostPreviews([$postPreview]);
+        $response->setPostPreviews($postLastAdded);
 
         // set in presenter
         $lastAddedPresenter->present($response);

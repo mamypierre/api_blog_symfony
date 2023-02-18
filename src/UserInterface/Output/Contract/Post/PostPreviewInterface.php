@@ -11,8 +11,9 @@ interface PostPreviewInterface
     public function setTitle(string $title): PostPreviewInterface;
     public function getShortDescription(): ?string;
     public function setShortDescription(string $shortDescription = null): PostPreviewInterface;
+
     /**
-     * @return  ArrayObject< ImageInterface >
+     * @return array
      */
     public function getImages(): array;
     public function addImage(ImageInterface $image): PostPreviewInterface;

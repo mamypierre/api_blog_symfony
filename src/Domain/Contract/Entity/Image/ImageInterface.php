@@ -4,15 +4,33 @@ namespace App\Domain\Contract\Entity\Image;
 
 interface ImageInterface
 {
-    public function getTitle(): string;
+    const TYPE_THUMBNAIL = 'thumbnail';
+    public const TYPES = [
+        self::TYPE_THUMBNAIL => self::TYPE_THUMBNAIL
+    ];
 
-    public function setTitle(string $title): ImageInterface;
+    public function getTitle(): ?string;
 
-    public function getType(): string;
+    public function setTitle(string $title): self;
 
-    public function setType(string $type): ImageInterface;
+    public function getType(): ?string;
 
-    public function getDimension(): string;
+    public function setType(string $type): self;
 
-    public function setDimension(string $dimension): ImageInterface;
+
+    public function getName(): ?string;
+
+    public function setName(string $name): self;
+
+    public function getPath(): ?string;
+
+    public function setPath(string $path): self;
+
+    public function getWidth(): ?int;
+
+    public function setWidth(int $width): self;
+
+    public function getHeight(): ?int;
+
+    public function setHeight(int $height): self;
 }

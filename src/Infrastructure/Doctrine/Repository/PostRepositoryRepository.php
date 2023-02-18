@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Infrastuture\Doctrine\Repository;
+namespace App\Infrastructure\Doctrine\Repository;
 
 use App\Domain\Contract\Repository\PostRepositoryInterface;
-use App\Infrastuture\Doctrine\Entity\Image;
-use App\Infrastuture\Doctrine\Entity\Post;
+use App\Infrastructure\Doctrine\Entity\Image;
+use App\Infrastructure\Doctrine\Entity\Post;
 
 class PostRepositoryRepository implements PostRepositoryInterface
 {

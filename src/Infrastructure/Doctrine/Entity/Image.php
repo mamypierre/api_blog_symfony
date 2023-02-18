@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Infrastuture\Doctrine\Entity;
+namespace App\Infrastructure\Doctrine\Entity;
 
 use App\Domain\Contract\Entity\Image\ImageInterface;
 

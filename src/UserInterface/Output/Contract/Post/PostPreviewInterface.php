@@ -3,9 +3,9 @@
 namespace App\UserInterface\Output\Contract\Post;
 
 use App\UserInterface\Output\Contract\ImageInterface;
-use ArrayObject;
+use App\UserInterface\Output\Contract\CreateUpdateDateInterface;
 
-interface PostPreviewInterface
+interface PostPreviewInterface extends CreateUpdateDateInterface
 {
     public function getTitle(): string;
     public function setTitle(string $title): PostPreviewInterface;

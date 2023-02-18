@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domain\Contract\Entity;
+namespace App\UserInterface\Output\Contract;
 
 use DateTimeImmutable;
 

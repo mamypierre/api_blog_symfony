@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Domain\UseCase\Post;
+
 use App\Domain\Contract\Presenter\Post\LastAddedPresenterInterface;
 use App\Domain\Contract\Repository\PostRepositoryInterface;
 use App\Domain\Contract\Request\Post\LastAddedRequestInterface;
@@ -23,9 +24,10 @@ class LastAdded implements LastAddedInterface
      * @param LastAddedPresenterInterface $lastAddedPresenter
      * @return void
      */
-    public function execute(LastAddedRequestInterface $request, LastAddedPresenterInterface $lastAddedPresenter) : void
+    public function execute(LastAddedRequestInterface $request, LastAddedPresenterInterface $lastAddedPresenter): void
     {
-        $postLastAdded = $this->postRepository->getLastAdded();
+        $postLastAdded = $this->postRepository->getLastAdded($request->getLimit());
+
         // build response
         $response = new LastAddedResponse();
         $response->setPostPreviews($postLastAdded);

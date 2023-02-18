@@ -5,11 +5,15 @@ namespace App\UserInterface\Output\Model\Post;
 use App\UserInterface\Output\Contract\ImageInterface;
 use App\UserInterface\Output\Contract\Post\PostPreviewInterface;
 use ArrayObject;
+use DateTimeImmutable;
 
 class PostPreview implements PostPreviewInterface
 {
     protected string $title;
     protected ?string $shortDescription = null;
+
+    protected DateTimeImmutable $updatedAt;
+    protected DateTimeImmutable $createdAt;
     /**
      * @todo collection
      */
@@ -77,6 +81,40 @@ class PostPreview implements PostPreviewInterface
         if (!array_search($image, $images, true)) {
             $this->images[] = $image;
         }
+        return $this;
+    }
+
+    /**
+     * @return DateTimeImmutable
+     */
+    public function getUpdatedAt(): DateTimeImmutable
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * @param DateTimeImmutable $updatedAt
+     */
+    public function setUpdatedAt(DateTimeImmutable $updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
+        return $this;
+    }
+
+    /**
+     * @return DateTimeImmutable
+     */
+    public function getCreatedAt(): DateTimeImmutable
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * @param DateTimeImmutable $createdAt
+     */
+    public function setCreatedAt(DateTimeImmutable $createdAt): self
+    {
+        $this->createdAt = $createdAt;
         return $this;
     }
 

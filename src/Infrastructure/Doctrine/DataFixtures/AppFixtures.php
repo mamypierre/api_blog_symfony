@@ -22,10 +22,10 @@ class AppFixtures extends Fixture
             ->setPath('image/');
         $manager->persist($image);
         // create 20 products! Bam!
-        for ($i = 0; $i < 2; $i++) {
+        for ($i = 0; $i < 3; $i++) {
             $post = new Post();
             $post
-                ->setTitle('product ' . $i)
+                ->setTitle('Post ' . $i)
                 ->setShortDescription('Short description ' . $i)
                 ->addImage($image)
             ;

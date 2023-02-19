@@ -13,7 +13,7 @@ php bin/console doctrine:fixtures:load
  GET /api/posts/last_added HTTP/1.1
  Host: your.host
  Content-Type: application/json
- Accept: */*
+ Accept: application/json
  Content-Length: 16
  {
  	"limit":100 // optional , default 5
@@ -24,5 +24,5 @@ php bin/console doctrine:fixtures:load
 ```
  GET /api/posts/6 HTTP/1.1
  Host: your.host
- Accept: */*
+ Accept: application/json
 ```

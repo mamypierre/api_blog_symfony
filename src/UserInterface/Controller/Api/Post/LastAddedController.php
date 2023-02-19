@@ -10,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class LastAddedController extends AbstractController
 {
@@ -17,10 +18,20 @@ class LastAddedController extends AbstractController
         Request                     $request,
         LastAddedUseCaseInterface   $lastAddedUseCase,
         LastAddedPresenterInterface $lastAddedPresenter,
-        SerializerInterface         $serializer
+        SerializerInterface         $serializer,
+        ValidatorInterface $validator
     ): JsonResponse
     {
-        $lastAddedRequest = $serializer->deserialize($request->getContent(), LastAddedRequest::class, 'json');
+        $lastAddedRequest = new LastAddedRequest();
+        if ($request->getContent()){
+            $lastAddedRequest = $serializer->deserialize($request->getContent(), LastAddedRequest::class, 'json');
+        }
+        // check error
+        $errors = $validator->validate($lastAddedRequest);
+        if (count($errors) > 0) {
+            $errorsString = (string) $errors;
+            return $this->json($errorsString);
+        }
         $lastAddedUseCase->execute($lastAddedRequest, $lastAddedPresenter);
         // built response api
         /** @var LastAddedViewModelInterface $viewModel */

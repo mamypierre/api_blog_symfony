@@ -3,11 +3,12 @@
 namespace App\UserInterface\Request\Post;
 
 use App\Domain\Contract\Request\Post\LastAddedRequestInterface;
-
+use Symfony\Component\Validator\Constraints as Assert;
 class LastAddedRequest implements LastAddedRequestInterface
 {
 
-    private int $limit;
+    #[Assert\LessThan(value: 101)]
+    private ?int $limit = null;
 
     public function getLimit(): ?int
     {

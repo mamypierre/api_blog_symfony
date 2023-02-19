@@ -7,9 +7,6 @@ use App\UserInterface\ViewModel\Post\Interface\ShowPostViewModelInterface;
 
 class ShowPostViewModel implements ShowPostViewModelInterface
 {
-    /**
-     * @todo protected
-     */
     protected ?PostInterface $post = null;
 
     public function __construct(?PostInterface $postPreviews = null)

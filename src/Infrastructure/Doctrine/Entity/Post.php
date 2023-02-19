@@ -25,9 +25,6 @@ class Post implements PostInterface
     private string $title;
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $shortDescription = null;
-    /**
-     * @todo collection
-     */
     #[ORM\ManyToMany(targetEntity: Image::class, inversedBy: 'posts')]
     private Collection $images ;
     #[ORM\Column(type: 'text')]
@@ -137,6 +134,7 @@ class Post implements PostInterface
     public function setId(int $id): self
     {
         $this->id = $id;
+        return $this;
     }
 
     /**

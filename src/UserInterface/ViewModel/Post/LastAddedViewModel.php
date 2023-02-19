@@ -6,9 +6,6 @@ use App\UserInterface\ViewModel\Post\Interface\LastAddedViewModelInterface;
 
 class LastAddedViewModel implements LastAddedViewModelInterface
 {
-    /**
-     * @todo protected
-     */
     protected array $postPreviews;
 
     public function __construct(array $postPreviews)

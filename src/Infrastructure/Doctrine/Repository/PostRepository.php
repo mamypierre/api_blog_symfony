@@ -25,7 +25,6 @@ class PostRepository extends ServiceEntityRepository implements PostRepositoryIn
 
     /**
      * @return array|PostRepositoryInterface[]
-     * @todo buid with doctrine
      */
     public function getLastAdded(?int $limit = null): array
     {

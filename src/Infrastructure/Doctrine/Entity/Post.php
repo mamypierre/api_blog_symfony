@@ -130,4 +130,8 @@ class Post implements PostInterface
         return $this;
     }
 
+    public function setId(int $id): self
+    {
+        $this->id = $id;
+    }
 }

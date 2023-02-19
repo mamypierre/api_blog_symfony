@@ -14,18 +14,12 @@ class PostPreview implements PostPreviewInterface
 
     protected DateTimeImmutable $updatedAt;
     protected DateTimeImmutable $createdAt;
+
+    protected string $url;
     /**
      * @todo collection
      */
     protected array $images = [];
-
-    public function __construct()
-    {
-        /**
-         * @todo collection
-         */
-//        $this->images = new ArrayObject();
-    }
 
     /**
      * @return string
@@ -118,4 +112,14 @@ class PostPreview implements PostPreviewInterface
         return $this;
     }
 
+    public function getUrl(): string
+    {
+        return $this->url;
+    }
+
+    public function setUrl(string $url): self
+    {
+        $this->url = $url;
+        return $this;
+    }
 }

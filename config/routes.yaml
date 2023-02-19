@@ -3,3 +3,7 @@ posts_last_added:
     path: /api/posts/last_added
     methods: GET
     controller: App\UserInterface\Controller\Api\Post\LastAddedController
+post_detail:
+    path: /api/posts/{id}
+    methods: GET
+    controller: App\UserInterface\Controller\Api\Post\LastAddedController

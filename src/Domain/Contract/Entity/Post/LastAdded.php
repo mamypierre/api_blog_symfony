@@ -6,6 +6,8 @@ use App\Domain\Contract\Entity\Image\ImageInterface;
 
 interface LastAdded extends CreateUpdateDateInterface
 {
+    public function getId(): ?int;
+    public function setId(int $id): self;
     public function getTitle(): string;
     public function setTitle(string $title): self;
     public function getShortDescription(): ?string;

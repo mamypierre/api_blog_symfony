@@ -1,11 +1,13 @@
 <?php
 namespace App\Domain\Response\Post\Interface;
 
-use App\Domain\Contract\Entity\Post\LastAdded;
+use App\Domain\Contract\Entity\Post\LastAddedInterface;
 interface LastAddedResponseInterface
 {
     /**
-     * @return LastAdded []
+     * @return LastAddedInterface []
      */
     public function getPostPreviews(): array;
+
+    public function setPostPreviews(array $postPreviews): self;
 }

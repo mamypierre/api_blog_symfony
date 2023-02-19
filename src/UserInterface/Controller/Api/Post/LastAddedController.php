@@ -3,7 +3,7 @@
 namespace App\UserInterface\Controller\Api\Post;
 
 use App\Domain\Contract\Presenter\Post\LastAddedPresenterInterface;
-use App\Domain\UseCase\Post\Interface\LastAddedInterface;
+use App\Domain\UseCase\Post\Interface\LastAddedUseCaseInterface;
 use App\UserInterface\Request\Post\LastAddedRequest;
 use App\UserInterface\ViewModel\Post\Interface\LastAddedViewModelInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -14,10 +14,10 @@ use Symfony\Component\Serializer\SerializerInterface;
 class LastAddedController extends AbstractController
 {
     public function __invoke(
-        Request $request,
-        LastAddedInterface $lastAddedUseCase,
+        Request                     $request,
+        LastAddedUseCaseInterface   $lastAddedUseCase,
         LastAddedPresenterInterface $lastAddedPresenter,
-        SerializerInterface $serializer
+        SerializerInterface         $serializer
     ): JsonResponse
     {
         $lastAddedRequest = $serializer->deserialize($request->getContent(), LastAddedRequest::class, 'json');

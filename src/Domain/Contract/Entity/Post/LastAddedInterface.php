@@ -4,7 +4,7 @@ namespace App\Domain\Contract\Entity\Post;
 use App\Domain\Contract\Entity\CreateUpdateDateInterface;
 use App\Domain\Contract\Entity\Image\ImageInterface;
 
-interface LastAdded extends CreateUpdateDateInterface
+interface LastAddedInterface extends CreateUpdateDateInterface
 {
     public function getId(): ?int;
     public function setId(int $id): self;

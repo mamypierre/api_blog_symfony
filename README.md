@@ -8,4 +8,4 @@ php bin/console doctrine:fixtures:load
 
 # use
 
-usl :http://localhost/api/posts/last_added
+url :http://localhost/api/posts/last_added

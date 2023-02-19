@@ -17,8 +17,9 @@ class LastAddedResponse implements LastAddedResponseInterface
     /**
      * @param array $postPreviews
      */
-    public function setPostPreviews(array $postPreviews): void
+    public function setPostPreviews(array $postPreviews): self
     {
         $this->postPreviews = $postPreviews;
+        return $this;
     }
 }

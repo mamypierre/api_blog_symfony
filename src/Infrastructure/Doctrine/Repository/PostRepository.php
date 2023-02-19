@@ -2,6 +2,7 @@
 
 namespace App\Infrastructure\Doctrine\Repository;
 
+use App\Domain\Contract\Entity\Post\PostInterface;
 use App\Domain\Contract\Repository\PostRepositoryInterface;
 use App\Infrastructure\Doctrine\Entity\Post;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
@@ -57,4 +58,8 @@ class PostRepository extends ServiceEntityRepository implements PostRepositoryIn
         }
     }
 
+    public function findById(int $postId): ?PostInterface
+    {
+        return $this->find($postId);
+    }
 }

@@ -6,10 +6,10 @@ use App\Domain\Contract\Presenter\Post\LastAddedPresenterInterface;
 use App\Domain\Contract\Repository\PostRepositoryInterface;
 use App\Domain\Contract\Request\Post\LastAddedRequestInterface;
 use App\Domain\Response\Post\LastAddedResponse;
-use App\Domain\UseCase\Post\Interface\LastAddedInterface;
+use App\Domain\UseCase\Post\Interface\LastAddedUseCaseInterface;
 
 
-class LastAdded implements LastAddedInterface
+class LastAddedUseCase implements LastAddedUseCaseInterface
 {
 
     private PostRepositoryInterface $postRepository;
@@ -21,10 +21,10 @@ class LastAdded implements LastAddedInterface
 
     /**
      * @param LastAddedRequestInterface $request
-     * @param LastAddedPresenterInterface $lastAddedPresenter
+     * @param LastAddedPresenterInterface $showPostPresenter
      * @return void
      */
-    public function execute(LastAddedRequestInterface $request, LastAddedPresenterInterface $lastAddedPresenter): void
+    public function execute(LastAddedRequestInterface $request, LastAddedPresenterInterface $showPostPresenter): void
     {
         $postLastAdded = $this->postRepository->getLastAdded($request->getLimit());
 
@@ -33,6 +33,6 @@ class LastAdded implements LastAddedInterface
         $response->setPostPreviews($postLastAdded);
 
         // set in presenter
-        $lastAddedPresenter->present($response);
+        $showPostPresenter->present($response);
     }
 }

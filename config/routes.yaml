@@ -6,4 +6,6 @@ posts_last_added:
 post_detail:
     path: /api/posts/{id}
     methods: GET
+    requirements:
+        id: '[0-9]+'
     controller: App\UserInterface\Controller\Api\Post\PostController

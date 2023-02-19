@@ -23,7 +23,6 @@ php bin/console doctrine:fixtures:load
 # get post
 ```
  GET /api/posts/6 HTTP/1.1
- Host: local.api.blog
- User-Agent: insomnia/2022.6.0
+ Host: your.host
  Accept: */*
 ```

@@ -30,6 +30,10 @@ class Post implements PostInterface
      */
     #[ORM\ManyToMany(targetEntity: Image::class, inversedBy: 'posts')]
     private Collection $images ;
+    #[ORM\Column(type: 'text')]
+    protected string|null $content = null;
+    #[ORM\Column(type: 'text')]
+    protected string|null $description = null;
 
     /**
      * @ORM\Column(type="datetime_immutable", name="created_at")
@@ -133,5 +137,39 @@ class Post implements PostInterface
     public function setId(int $id): self
     {
         $this->id = $id;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getContent(): ?string
+    {
+        return $this->content;
+    }
+
+    /**
+     * @param string|null $content
+     */
+    public function setContent(?string $content = null): self
+    {
+        $this->content = $content;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param string|null $description
+     */
+    public function setDescription(?string $description = null): self
+    {
+        $this->description = $description;
+        return $this;
     }
 }

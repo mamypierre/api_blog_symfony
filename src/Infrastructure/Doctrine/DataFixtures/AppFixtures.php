@@ -28,6 +28,8 @@ class AppFixtures extends Fixture
                 ->setTitle('Post ' . $i)
                 ->setShortDescription('Short description ' . $i)
                 ->addImage($image)
+                ->setDescription('Description ' . $i)
+                ->setContent('Content ' . $i);
             ;
             $manager->persist($post);
         }

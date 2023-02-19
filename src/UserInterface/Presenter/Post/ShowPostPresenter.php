@@ -34,6 +34,8 @@ class ShowPostPresenter implements ShowPostPresenterInterface
             $postApi
                 ->setTitle($post->getTitle())
                 ->setShortDescription($post->getShortDescription())
+                ->setDescription($post->getDescription())
+                ->setContent($post->getContent())
                 ->setCreatedAt($post->getCreatedAt())
                 ->setUpdatedAt($post->getUpdatedAt())
             ;

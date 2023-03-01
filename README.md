@@ -33,8 +33,12 @@ docker-compose exec php bin/console doctrine:fixtures:load
 --header 'Content-Type: application/json' 
 ```
 
+
+
 # use local env
 ```
+composer update
+
 php bin/console doctrine:database:create
 php bin/console make:migration
 php bin/console doctrine:migrations:migrate

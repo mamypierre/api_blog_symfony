@@ -12,6 +12,7 @@ git clone git@github.com:mamypierre/api_blog_symfony.git
 
 ```
 cd this_Root/Docker
+docker-compose up -d --build
 docker-compose exec php composer update
 docker-compose exec php bin/console doctrine:database:create
 docker-compose exec php bin/console make:migration

@@ -1,7 +1,15 @@
 
 # Symfony Clean Architecture
 
+# require
+    composer,
+    "php": ">=8.1"
+# init
 ```
+git clone git@github.com:mamypierre/api_blog_symfony.git
+
+Composer install
+
 php bin/console doctrine:database:create
 php bin/console make:migration
 php bin/console doctrine:migrations:migrate

@@ -1,0 +1,43 @@
+version: '3.9'
+services:
+  composer:
+    container_name: composer
+    image: composer:latest
+    command: [ "composer", "update" ]
+    volumes:
+      - ../:/app
+  apache:
+    container_name: apache
+    build:
+      context: ./apache
+      args:
+        - PHP_8_IP=php_8
+    volumes:
+      - ../:${WORK_ROOT_DIR}
+      - ./apache/conf/extra/httpd-vhosts.conf:/usr/local/apache2/conf/extra/httpd-vhosts.conf
+      - ./apache/conf/httpd.conf:/usr/local/apache2/conf/httpd.conf
+    ports:
+      - ${APACHE_EXPOSED_PORT}:80
+    environment:
+      - APACHE_EXPOSED_PORT=${APACHE_EXPOSED_PORT}
+      - PHP_8_IP=php_8
+      - WORK_ROOT_DIR=${WORK_ROOT_DIR}/public
+  php_8:
+    container_name: php_8
+    build:
+      context: ./php
+      args:
+        - PHP_ROOT_DIR=${PHP_ROOT_DIR}
+        - WORK_ROOT_DIR=${WORK_ROOT_DIR}
+    volumes:
+      - ../:${WORK_ROOT_DIR}
+      - ./php/8/www.conf:${PHP_ROOT_DIR}/php-fpm.d/www.conf
+      - ./php/composer/auth.json:/root/.composer/auth.json
+    environment:
+      - WEB_USER=${WEB_USER}
+      - WEB_GROUP=${WEB_GROUP}
+      - PHP_ROOT_DIR=${WORK_ROOT_DIR}
+      - WORK_ROOT_DIR=${WORK_ROOT_DIR}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+      - "local.back.presta:host-gateway"
